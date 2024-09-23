@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>INST377 - Lab 4</title>
+        <link rel = "stylesheet" href="lab4.css">
+    </head>
+
+    <body>
+        <h1 id = "word">INST377 - Lab 4</h1> 
+
+        <div class="main-container">
+            <div class="content-area">
+                <div class="content-box">
+                    <form name = "nameForm" onsubmit="return validateName()" >
+                        <label>Name:</label>
+                        <input type="text" id="firstName">
+                        <input type="submit" value="Alert Me!">
+                    </form>
+                </div>
+            </div>
+            
+            <aside id="changeColor">
+                <div class="content-box">
+                    <button onclick="changeColor()">Change Color</button>
+                </div>
+            </aside>
+        </div>
+
+        <div class="main-container">
+            <div class="content-area">
+                <div class="content-box">
+                    <form name = "textForm" onsubmit="return validateText()" >
+                        <label>Text Tester:</label>
+                        <input type="text" id="textToTest">
+                        <input type="submit" value="Validate Text">
+                    </form>
+                </div>
+            </div>
+            
+            <aside id="changeColor">
+                <div class="content-box">
+                    <button onclick="addText()">Add text!</button>
+                </div>
+            </aside>
+        </div>
+
+        <script type="text/javascript">
+            function changeColor() {
+                
+                if(document.body.style.backgroundColor == 'pink') document.body.style.backgroundColor = 'violet';
+                else document.body.style.backgroundColor = 'pink';
+
+            }
+
+            
+            function validateName() {
+                const name = document.getElementById("firstName").value;
+
+                if(name === "") {
+                    alert("ENTER A FIRST NAME!")
+                    return false;
+                } else {
+                    alert('Hi ' + name + "!");
+                    return true;
+                }
+            }
+
+            function validateText() {
+                const text = document.getElementById("textToTest").value;
+                const validationRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+                if (validationRegex.test(text)) {
+                    alert('sus')
+                    return false;
+                }
+
+                return true;
+            }
+
+            function addText() {
+                const header = document.getElementById("word");
+                header.innerText += "Add Text";
+            }
+        </script>
+
+    </body>
+</html>
